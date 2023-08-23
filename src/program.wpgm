@@ -1,0 +1,41 @@
+import wollok.game.*
+import autito.*
+
+program game {
+
+	// configuracion del tablero
+	game.height(20)
+	game.width(25)
+	game.title("ESTACIONA BIEN FORRO")
+	game.boardGround("parking.jpg")
+	
+	
+	//agregar auto al tablero
+	corsa.position(
+		game.at(
+			0.randomUpTo(game.width()).truncate(0),
+			0.randomUpTo(game.height().truncate(0) )
+		)
+	)
+	game.addVisualCharacter(corsa)
+	keyboard.up().onPressDo({
+		corsa.MoverArriba()
+	})
+	
+	keyboard.down().onPressDo({
+		corsa.MoverAbajo()
+		
+		}
+	)
+	keyboard.left().onPressDo( {
+		corsa.MoverIzquierda()	
+	})
+	keyboard.right().onPressDo({
+		corsa.MoverDerecha()
+	} 
+	)
+	
+	
+	game.start()
+}
+
